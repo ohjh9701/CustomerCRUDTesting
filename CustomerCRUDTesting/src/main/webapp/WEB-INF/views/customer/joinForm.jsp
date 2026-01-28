@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 | SHOP</title>
+<title>회원가입 | SHOHPPINGMALL</title>
 <style>
     /* 기본 설정 */
     body {
@@ -105,7 +105,7 @@
 <body>
 
 <div class="join-container">
-    <h2>JOIN <span>SHOP</span></h2>
+    <h2>SH<span>OH</span>PPING MALL 회원가입</h2>
     
     <form action="/customer/join" method="post">
         <div class="form-group">
@@ -125,7 +125,7 @@
 
         <div class="form-group">
             <label for="phone">연락처</label>
-            <input type="tel" id="phone" name="phone" placeholder="010-0000-0000">
+            <input type="text" id="phone" name="phone" placeholder="'-'을 빼고 숫자만 입력해주세요">
         </div>
 
         <div class="form-group">
