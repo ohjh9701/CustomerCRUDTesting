@@ -156,6 +156,8 @@
     </div>
 
     <div class="btn-group">
+        <a href="/customer/addCash" class="btn btn-edit">캐쉬충전</a>
+        <a href="/customer/CashList" class="btn btn-edit">캐쉬내역</a>
         <a href="/customer/editForm" class="btn btn-edit">정보 수정하기</a>
         <a href="/customer/withdraw" class="btn btn-withdraw" onclick="return confirm('정말로 탈퇴하시겠습니까?')">회원 탈퇴</a>
     </div>

@@ -189,7 +189,7 @@ nav {
 		<a href="#" class="logo">SH<span>OH</span>PPING MALL
 		</a>
 		<div class="nav-menu">
-			<a href="#">BEST</a> <a href="#">NEW</a> <a href="/customer/mypage">MY PAGE</a> <a
+			<a href="#">About</a> <a href="#">Product</a> <a href="/customer/mypage">MY PAGE</a> <a
 				href="/customer/logout" class="logout-btn">LOGOUT</a>
 		</div>
 	</nav>
