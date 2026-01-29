@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,54 +133,54 @@ nav {
 }
 /* 카드의 높이 설정을 'auto'로 변경하여 내용물에 맞게 늘어나게 합니다 */
 .product-card {
-    background: #ffffff;
-    height: auto; /* 고정 높이 해제 */
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column; /* 세로 정렬 */
-    overflow: hidden; /* 이미지가 둥근 모서리를 벗어나지 않게 */
-    transition: all 0.3s;
-    cursor: pointer;
-    border: 1px solid #eee;
+	background: #ffffff;
+	height: auto; /* 고정 높이 해제 */
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column; /* 세로 정렬 */
+	overflow: hidden; /* 이미지가 둥근 모서리를 벗어나지 않게 */
+	transition: all 0.3s;
+	cursor: pointer;
+	border: 1px solid #eee;
 }
 
 /* 이미지 박스 설정 */
 .product-img-box {
-    width: 100%;
-    height: 200px; /* 이미지 영역 높이 고정 */
-    overflow: hidden;
-    background-color: #f5f5f5;
+	width: 100%;
+	height: 200px; /* 이미지 영역 높이 고정 */
+	overflow: hidden;
+	background-color: #f5f5f5;
 }
 
 .product-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 이미지 비율을 유지하며 꽉 채움 */
-    transition: transform 0.3s; /* 이미지 확대 애니메이션 */
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지 비율을 유지하며 꽉 채움 */
+	transition: transform 0.3s; /* 이미지 확대 애니메이션 */
 }
 
 /* 호버 시 이미지 살짝 확대 효과 */
 .product-card:hover .product-img-box img {
-    transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 /* 상품 정보 텍스트 */
 .product-info {
-    padding: 15px;
-    text-align: left;
+	padding: 15px;
+	text-align: left;
 }
 
 .product-name {
-    font-size: 15px;
-    margin: 0 0 5px 0;
-    color: #151515;
+	font-size: 15px;
+	margin: 0 0 5px 0;
+	color: #151515;
 }
 
 .product-price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #ff0000; /* 포인트 컬러 레드 */
-    margin: 0;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ff0000; /* 포인트 컬러 레드 */
+	margin: 0;
 }
 </style>
 </head>
@@ -189,8 +190,9 @@ nav {
 		<a href="#" class="logo">SH<span>OH</span>PPING MALL
 		</a>
 		<div class="nav-menu">
-			<a href="#">About</a> <a href="#">Product</a> <a href="/customer/mypage">MY PAGE</a> <a
-				href="/customer/logout" class="logout-btn">LOGOUT</a>
+			<a href="#">About</a> <a href="#">Product</a> <a
+				href="/customer/mypage">MY PAGE</a> <a href="/customer/logout"
+				class="logout-btn">LOGOUT</a>
 		</div>
 	</nav>
 
@@ -209,44 +211,44 @@ nav {
 	</div>
 
 	<div class="content-area">
-		<h2>오늘의 <span style="color: #ff0000">BEST</span> 추천 상품</h2>
+		<h2>
+			오늘의 <span style="color: #ff0000">BEST</span> 추천 상품
+		</h2>
 		<div class="product-grid">
-			<div class="product-card">
-				<div class="product-img-box">
-					<img src="/resources/images/item1.jpg" alt="상품이미지">
+			<c:forEach var="product" items="${productList}">
+				<div class="product-card">
+					<div
+						style="position: absolute; padding: 5px 10px; background: rgba(21, 21, 21, 0.7); color: white; font-size: 10px; border-radius: 0 0 10px 0; z-index: 1;">
+						${product.category}</div>
+
+					<div class="product-img-box">
+						<img src="/resources/images/${product.image}"
+							alt="${product.name}">
+					</div>
+
+					<div class="product-info">
+						<p class="product-name">${product.name}</p>
+
+						<c:choose>
+							<c:when test="${product.salePct > 0}">
+								<p class="product-price">
+									<span
+										style="font-size: 12px; color: #888; text-decoration: line-through; margin-right: 5px;">
+										${product.price}원 </span> <span style="color: #ff0000;"> <fmt:formatNumber
+											value="${product.price * (1 - product.salePct/100)}"
+											type="number" maxFractionDigits="0" />원
+									</span> <span
+										style="font-size: 12px; color: #ff0000; margin-left: 5px;">
+										${product.salePct}% OFF </span>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="product-price">${product.price}원</p>
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</div>
-				<div class="product-info">
-					<p class="product-name">T1 레드 유니폼</p>
-					<p class="product-price">129,000원</p>
-				</div>
-			</div>
-			<div class="product-card">
-				<div class="product-img-box">
-					<img src="/resources/images/item2.jpg" alt="상품이미지">
-				</div>
-				<div class="product-info">
-					<p class="product-name">T1 홈 유니폼</p>
-					<p class="product-price">89,000원</p>
-				</div>
-			</div>
-			<div class="product-card">
-				<div class="product-img-box">
-					<img src="/resources/images/item3.jpg" alt="상품이미지">
-				</div>
-				<div class="product-info">
-					<p class="product-name">T1 홈 유니폼[FAKER]</p>
-					<p class="product-price">99,000원</p>
-				</div>
-			</div>
-			<div class="product-card">
-				<div class="product-img-box">
-					<img src="/resources/images/item4.png" alt="상품이미지">
-				</div>
-				<div class="product-info">
-					<p class="product-name">월즈 우승 기념 유니폼</p>
-					<p class="product-price">159,000원</p>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 	</div>
 

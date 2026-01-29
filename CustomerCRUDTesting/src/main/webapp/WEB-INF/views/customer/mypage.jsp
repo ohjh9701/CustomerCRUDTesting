@@ -116,6 +116,28 @@
         background-color: #f5f5f5;
         color: #ff0000;
     }
+    
+   .btn-addcash {
+        background-color: #ff0000;
+        color: white;
+        border: none;
+    }
+
+    .btn-addcash:hover {
+        background-color: #151515;
+        transform: translateY(-3px);
+    }
+    
+   .btn-cashlist {
+        background-color: #ff0000;
+        color: white;
+        border: none;
+    }
+
+    .btn-cashlist:hover {
+        background-color: #151515;
+        transform: translateY(-3px);
+    }
 </style>
 </head>
 <body>
@@ -156,8 +178,8 @@
     </div>
 
     <div class="btn-group">
-        <a href="/customer/addCash" class="btn btn-edit">캐쉬충전</a>
-        <a href="/customer/CashList" class="btn btn-edit">캐쉬내역</a>
+        <a href="/customer/addCash" class="btn btn-addcash">캐쉬충전</a>
+        <a href="/customer/CashList" class="btn btn-cashlist">캐쉬내역</a>
         <a href="/customer/editForm" class="btn btn-edit">정보 수정하기</a>
         <a href="/customer/withdraw" class="btn btn-withdraw" onclick="return confirm('정말로 탈퇴하시겠습니까?')">회원 탈퇴</a>
     </div>
